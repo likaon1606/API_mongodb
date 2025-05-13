@@ -1,0 +1,15 @@
+import 'dotenv/config'
+import express from 'express'
+import routesMascotas from './routes/mascotas.js'
+
+const app = express()
+
+app.use('/api/mascotas', routesMascotas)
+
+try {
+  const PORT = process.env.PORT || 3000
+  app.listen(PORT, console.log(`Servidor corriendo en el puerto: ${PORT}`)
+  )
+} catch (error) {
+  console.log(`Falló la conexión al servidor ${error}`)
+}
