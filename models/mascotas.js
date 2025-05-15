@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import Mascota from '../schemas/mascotas.js'
 
 class mascotasModel {
@@ -6,14 +7,14 @@ class mascotasModel {
   }
 
   async update(id, mascota) {
-    return await Mascota.findOneAndUpdate(id, mascota, {
+    return await Mascota.findOneAndUpdate({ _id: new mongoose.Types.ObjectId(id) }, mascota, {
       new: true,
       // runValidators: true
     })
   }
 
   async delete(id) {
-    return await Mascota.findOneAndDelete(id)
+    return await Mascota.findByIdAndDelete(id)
   }
 
   async getAll() {

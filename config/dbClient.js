@@ -1,5 +1,4 @@
 import 'dotenv/config'
-import { MongoClient } from "mongodb"
 import mongoose, { connect } from 'mongoose'
 
 class dbClient {
@@ -7,7 +6,7 @@ class dbClient {
     this.conectarBaseDatos() 
   }
   async conectarBaseDatos(){
-    const queryString = `mongodb+srv://${process.env.USER_DB}:${process.env.PASSWORD_DB}@${process.env.SERVER_DB}/?retryWrites=true&w=majority&appName=adopcion`
+    const queryString = `mongodb+srv://${process.env.USER_DB}:${process.env.PASSWORD_DB}@${process.env.SERVER_DB}/adopcion?retryWrites=true&w=majority`
     await mongoose.connect(queryString)
   }
 
