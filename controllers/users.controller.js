@@ -52,6 +52,15 @@ class usersController {
       console.error(error)
     }
   }
+      async profile(req, res) {
+      try {
+        console.log(req.email)
+        const data = await usersModel.getOne({ email: req.emailConectado })
+        res.status(201).json(data)
+      } catch (error) {
+        res.status(500).send(error)
+      }
+    }
 }
 
 export default new usersController()

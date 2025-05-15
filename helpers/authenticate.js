@@ -9,11 +9,12 @@ export function verifyToken(req, res, next) {
   const token = req.header('Authorization')?.replace('Bearer', '').trim()
   
   if (!token) {
-    res.status(401).json({ error: 'Token required' })
+    return res.status(401).json({ error: 'Token required' })
   }
 
   try {
     const dataToken = jwt.verify(token, process.env.JWT_TOKEN_SECRET)
+    req.emailConectado = dataToken.email
     next()
   } catch (error) {
     res.status(401).json({ error: 'Token Invalid' })
