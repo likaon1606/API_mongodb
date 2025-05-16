@@ -1,5 +1,5 @@
 {
-  "name": "crud_mongodb_express_rest_api",
+  "name": "adopcion_mascotas",
   "version": "1.0.0",
   "main": "app.js",
   "type": "module",
